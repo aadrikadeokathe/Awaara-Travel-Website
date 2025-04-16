@@ -1,0 +1,210 @@
+book.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Your Trip - Awaara Travel</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="fonts/font-awesome/css/all.min.css">
+  <script src="js/auth.js"></script>
+  <style>
+    .booking-notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 15px 20px;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      z-index: 1000;
+      display: none;
+    }
+    .booking-notification.success {
+      background-color: #4CAF50;
+    }
+    .booking-notification.error {
+      background-color: #f44336;
+    }
+    .booking-form {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+    .form-group {
+      flex: 1 0 300px;
+      margin-right: 15px;
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .form-group textarea {
+      height: 100px;
+    }
+    .submit-btn {
+      background-color: #ff6b6b;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+    .submit-btn:hover {
+      background-color: #ff5252;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <div id="menu-bar" class="fas fa-bars"></div>
+    <a href="index.html" class="logo"><span>A</span>waara</a>
+    <nav class="navbar">
+      <a href="index.html">home</a>
+      <a href="packages.html">packages</a>
+      <a href="services.html">services</a>
+      <a href="gallery.html">gallery</a>
+      <a href="review.html">review</a>
+      <a href="contact.html">contact</a>
+      <a href="#" onclick="handleLogout()" class="logout-btn" style="display: none;" id="logoutBtn">logout</a>
+    </nav>
+  </header>
+
+  <!-- Booking Section -->
+  <section class="book" id="book">
+    <h1 class="heading">
+      <span>b</span>
+      <span>o</span>
+      <span>o</span>
+      <span>k</span>
+      <span class="space"></span>
+      <span>n</span>
+      <span>o</span>
+      <span>w</span>
+    </h1>
+    
+    <div class="row">
+      <div class="image">
+        <img src="images/book-img.png" alt="">
+      </div>
+      
+      <form id="bookingForm" class="booking-form" onsubmit="handleBookingSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Your full name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Your email address" required>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="10-digit phone number" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="destination">Destination</label>
+            <select id="destination" name="destination" required>
+              <option value="">Select Destination</option>
+              <option value="Goa">Goa</option>
+              <option value="Kashmir">Jammu and Kashmir</option>
+              <option value="Agra">Agra</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Amritsar">Amritsar</option>
+              <option value="Rajasthan">Rajasthan</option>
+              <option value="Hyderabad">Hyderabad</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="package">Package Type</label>
+            <select id="package" name="package" required>
+              <option value="">Select Package</option>
+              <option value="Silver">Silver</option>
+              <option value="Gold">Gold</option>
+              <option value="Platinum">Platinum</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="travelers">Number of Travelers</label>
+            <input type="number" id="travelers" name="travelers" min="1" max="10" value="1" required>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date">Travel Date</label>
+            <input type="date" id="date" name="date" required>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group" style="flex: 1 0 100%;">
+            <label for="special_requests">Special Requests</label>
+            <textarea id="special_requests" name="special_requests" placeholder="Any special requests or requirements?"></textarea>
+          </div>
+        </div>
+        
+        <button type="submit" class="submit-btn">Book Now</button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    // Check login status when page loads
+    window.addEventListener('load', function() {
+      // No login check needed for book.html as it's accessible to all users
+    });
+
+    function handleLogout() {
+      localStorage.removeItem('adminToken');
+      window.location.href = 'index.html';
+    }
+
+    function handleBookingSubmit(event) {
+      event.preventDefault();
+      
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        destination: document.getElementById('destination').value,
+        package: document.getElementById('package').value,
+        travelers: document.getElementById('travelers').value,
+        date: document.getElementById('date').value,
+        special_requests: document.getElementById('special_requests').value
+      };
+
+      localStorage.setItem('bookingData', JSON.stringify(formData));
+      window.location.href = 'booking.html';
+    }
+  </script>

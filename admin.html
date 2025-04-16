@@ -1,0 +1,484 @@
+admin.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Awaara Travel</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="icon" href="images/logoadrey.png">
+  <style>
+    :root {
+      --primary-color: #ff5a5f;
+      --secondary-color: #484848;
+      --bg-light: #f7f7f7;
+      --text-dark: #2c3e50;
+      --shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    .dashboard-container {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      min-height: 100vh;
+    }
+
+    /* Sidebar Styles */
+    .sidebar {
+      background-color: white;
+      padding: 2rem 1rem;
+      box-shadow: var(--shadow);
+    }
+
+    .logo-container {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .logo-container img {
+      width: 150px;
+      height: auto;
+    }
+
+    .nav-menu {
+      list-style: none;
+      padding: 0;
+    }
+
+    .nav-item {
+      margin-bottom: 0.5rem;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      color: var(--secondary-color);
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link i {
+      margin-right: 10px;
+      width: 20px;
+    }
+
+    .nav-link.active,
+    .nav-link:hover {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    /* Main Content Styles */
+    .main-content {
+      padding: 2rem;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: var(--text-dark);
+    }
+
+    .admin-profile {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .admin-profile img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* Dashboard Cards */
+    .dashboard-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-card h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.1rem;
+      color: var(--secondary-color);
+    }
+
+    .stat-card .number {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+
+    /* Tables */
+    .table-container {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+    }
+
+    .table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background-color: var(--bg-light);
+      font-weight: 600;
+    }
+
+    tr:hover {
+      background-color: var(--bg-light);
+    }
+
+    .status-badge {
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+    }
+
+    .status-active {
+      background-color: #e3fcef;
+      color: #00a854;
+    }
+
+    .status-pending {
+      background-color: #fff7e6;
+      color: #fa8c16;
+    }
+
+    .error {
+      color: var(--primary-color);
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .dashboard-container {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        display: none;
+      }
+
+      .dashboard-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo-container">
+        <img src="images/logoadrey.png" alt="Awaara Travel Logo">
+      </div>
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="#" class="nav-link active" id="dashboardTab">
+            <i class="fas fa-tachometer-alt"></i> Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link" id="userLogsTab">
+            <i class="fas fa-users"></i> User Logs
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link" id="bookingLogsTab">
+            <i class="fas fa-calendar-check"></i> Booking Logs
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="index.html" class="nav-link">
+            <i class="fas fa-home"></i> Back to Site
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="header">
+        <h1>Admin Dashboard</h1>
+        <div class="admin-profile">
+          <span>Admin</span>
+          <img src="images/logoadrey.png" alt="Admin Profile">
+        </div>
+      </div>
+
+      <!-- Dashboard Stats -->
+      <div class="dashboard-stats">
+        <div class="stat-card">
+          <h3>Total Users</h3>
+          <div class="number" id="totalUsers">0</div>
+        </div>
+        <div class="stat-card">
+          <h3>Total Bookings</h3>
+          <div class="number" id="totalBookings">0</div>
+        </div>
+        <div class="stat-card">
+          <h3>Active Users</h3>
+          <div class="number" id="activeUsers">0</div>
+        </div>
+      </div>
+
+      <!-- User Logs Section -->
+      <section id="userLogsSection" class="table-container">
+        <div class="table-header">
+          <h2>User Activity Logs</h2>
+        </div>
+        <div id="userLogsError" class="error"></div>
+        <table id="userLogsTable">
+          <thead>
+            <tr>
+              <th>Log ID</th>
+              <th>User Name</th>
+              <th>Action</th>
+              <th>Status</th>
+              <th>Log Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- User logs will be populated here -->
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Booking Logs Section -->
+      <section id="bookingLogsSection" class="table-container" style="display: none;">
+        <div class="table-header">
+          <h2>Booking Logs</h2>
+        </div>
+        <div id="bookingLogsError" class="error"></div>
+        <div id="bookingLogsContent">
+          <!-- Booking logs will be populated here -->
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+  <script src="js/admin-socket.js"></script>
+  <script>
+    // Tab switching functionality
+    const dashboardTab = document.getElementById('dashboardTab');
+    const userLogsTab = document.getElementById('userLogsTab');
+    const bookingLogsTab = document.getElementById('bookingLogsTab');
+    const userLogsSection = document.getElementById('userLogsSection');
+    const bookingLogsSection = document.getElementById('bookingLogsSection');
+
+    function switchTab(activeTab) {
+      // Remove active class from all tabs
+      document.querySelectorAll('.nav-link').forEach(tab => tab.classList.remove('active'));
+      // Add active class to clicked tab
+      activeTab.classList.add('active');
+
+      // Show/hide sections based on active tab
+      if (activeTab === userLogsTab) {
+        userLogsSection.style.display = 'block';
+        bookingLogsSection.style.display = 'none';
+      } else if (activeTab === bookingLogsTab) {
+        bookingLogsSection.style.display = 'block';
+        userLogsSection.style.display = 'none';
+      }
+    }
+
+    userLogsTab.addEventListener('click', (e) => {
+      e.preventDefault();
+      switchTab(userLogsTab);
+    });
+
+    bookingLogsTab.addEventListener('click', (e) => {
+      e.preventDefault();
+      switchTab(bookingLogsTab);
+    });
+
+    // Fetch and display user logs
+    async function fetchUserLogs() {
+      const errorDiv = document.getElementById('userLogsError');
+      const tbody = document.querySelector('#userLogsTable tbody');
+      errorDiv.textContent = '';
+      tbody.innerHTML = '';
+
+      try {
+        const response = await fetch('/api/users/logs');
+        if (!response.ok) {
+          throw new Error('Failed to fetch user logs');
+        }
+        const data = await response.json();
+        if (data.success) {
+          data.logs.forEach(log => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+              <td>${log.log_id}</td>
+              <td>${log.full_name}</td>
+              <td>${log.action}</td>
+              <td><span class="status-badge status-active">Active</span></td>
+              <td>${new Date(log.timestamp).toLocaleString()}</td>
+            `;
+            tbody.appendChild(tr);
+          });
+
+          // Update dashboard stats
+          document.getElementById('totalUsers').textContent = data.logs.length;
+          document.getElementById('activeUsers').textContent = 
+            data.logs.filter(log => log.action === 'login').length;
+        } else {
+          errorDiv.textContent = data.message || 'Failed to load user logs';
+        }
+      } catch (err) {
+        errorDiv.textContent = err.message;
+      }
+    }
+
+    // Fetch and display booking logs
+    async function fetchBookingLogs() {
+      const errorDiv = document.getElementById('bookingLogsError');
+      const content = document.getElementById('bookingLogsContent');
+      errorDiv.textContent = '';
+
+      try {
+        const response = await fetch('/api/bookings/logs');
+        if (!response.ok) {
+          throw new Error('Failed to fetch booking logs');
+        }
+        const data = await response.json();
+        if (data.success) {
+          // Update total bookings stat
+          document.getElementById('totalBookings').textContent = data.logs.length;
+
+          // Create and populate bookings table
+          content.innerHTML = `
+            <table>
+              <thead>
+                <tr>
+                  <th>Booking ID</th>
+                  <th>Customer</th>
+                  <th>Package</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${data.logs.map(booking => `
+                  <tr>
+                    <td>${booking.booking_id}</td>
+                    <td>${booking.customer_name}</td>
+                    <td>${booking.package_name}</td>
+                    <td><span class="status-badge ${booking.status === 'confirmed' ? 'status-active' : 'status-pending'}">
+                      ${booking.status}
+                    </span></td>
+                    <td>${new Date(booking.booking_date).toLocaleDateString()}</td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          `;
+        } else {
+          errorDiv.textContent = data.message || 'Failed to load booking logs';
+        }
+      } catch (err) {
+        errorDiv.textContent = err.message;
+      }
+    }
+
+    // Initial data fetch
+    fetchUserLogs();
+    fetchBookingLogs();
+
+    // Refresh data periodically
+    setInterval(() => {
+      fetchUserLogs();
+      fetchBookingLogs();
+    }, 30000); // Refresh every 30 seconds
+  </script>
+</body>
+</html>
+
+
+
+
+  <!-- Footer Section -->
+  <section class="footer">
+    <div class="box-container">
+      <div class="box">
+        <h3>about us</h3>
+        <p>Awaara Travel is your gateway to unforgettable adventures across India. We specialize in curated travel experiences that showcase the rich culture, stunning landscapes, and vibrant heritage of our beautiful country.</p>
+      </div>
+      <div class="box">
+        <h3>branch locations</h3>
+        <a href="#">delhi</a>
+        <a href="#">mumbai</a>
+        <a href="#">bangalore</a>
+        <a href="#">chennai</a>
+      </div>
+      <div class="box">
+        <h3>quick links</h3>
+        <a href="index.html">home</a>
+        <a href="packages.html">packages</a>
+        <a href="services.html">services</a>
+        <a href="gallery.html">gallery</a>
+        <a href="review.html">review</a>
+        <a href="contact.html">contact</a>
+        <a href="book.html">book</a>
+      </div>
+      <div class="box">
+        <h3>follow us</h3>
+        <a href="#">facebook</a>
+        <a href="#">instagram</a>
+        <a href="#">twitter</a>
+        <a href="#">linkedin</a>
+      </div>
+    </div>
+    <h1 class="credit"> created by <span> Awaara Travel Team </span> | all rights reserved! </h1>
+  </section>
+  
+  <script src="js/bookings.js"></script>
+</body>
+</html>
+

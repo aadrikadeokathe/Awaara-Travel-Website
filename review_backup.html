@@ -1,0 +1,141 @@
+EW<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Awaara Travel - Reviews</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="icon" href="../images/Aeroplane.png">
+</head>
+<body>
+
+    <!-- Header (identical to packages.html) -->
+    <header>
+        <div id="menu-bar" class="fas fa-bars"></div>
+        <a class="navbar-brand" href="/">
+            <div href="#" class="logo-image">
+                <img src="images/logoadrey.png" class="img-fluid"
+                    style="object-fit: contain; width: 180px; height: 80px">
+            </div>
+        </a>
+        <div class="nav">
+            <nav class="navbar">
+                <a href="index.html">Home</a>
+                <a href="book.html">Book</a>
+                <a href="services.html">Services</a>
+                <a href="packages.html">Packages</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="review.html">Review</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+        <div class="icons">
+            <i class="fas fa-user" id="login-btn" title="Login"></i>
+        </div>
+    </header>
+
+    <!-- Login Form (identical to packages.html) -->
+    <div class="login-form-container">
+        <i class="fas fa-times" id="form-close"></i>
+        <form id="login-form">
+            <h3>Login</h3>
+            <input type="email" class="box" placeholder="Enter your Email" required>
+            <input type="password" class="box" placeholder="Enter your Password" required>
+            <input type="submit" value="Login Now" class="btn">
+            <input type="checkbox" id="remember">
+            <label for="remember">Remember me</label>
+            <p>Don't have an account? <a href="#" onclick="showRegister()">Register now</a></p>
+        </form>
+        <form id="register-form" style="display: none;">
+            <h3>Register</h3>
+            <input type="text" class="box" placeholder="Enter your Name" required>
+            <input type="email" class="box" placeholder="Enter your Email" required>
+            <input type="password" class="box" placeholder="Create Password" required>
+            <input type="submit" value="Register Now" class="btn">
+            <p>Already have an account? <a href="#" onclick="showLogin()">Login instead</a></p>
+        </form>
+    </div>
+
+    <!-- Reviews Section with Slider -->
+    <section class="packages" id="review">
+        <h1 class="heading"><span>CUSTOMER REVIEWS</span></h1>
+        <div class="swiper-container review-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="manvi.jpg" alt="">
+                        <div class="content">
+                            <h3>Manvi Garg</h3>
+                            <p>It was very fun and well planned and organised</p>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Other review slides... -->
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+
+    <!-- Review Form Section -->
+    <section class="review-form">
+        <h1 class="heading"><span>SHARE YOUR EXPERIENCE</span></h1>
+        <form id="reviewForm" action="submit_review.php" method="POST">
+            <div class="inputBox">
+                <input type="text" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="inputBox">
+                <input type="email" name="email" placeholder="Your Email" required>
+            </div>
+            <!-- Form fields continue... -->
+            <button type="submit" class="btn">Submit Review</button>
+        </form>
+    </section>
+
+    <!-- Footer (identical to packages.html) -->
+    <section class="footer">
+        <!-- Footer content same as packages.html -->
+    </section>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        // Initialize review slider
+        new Swiper(".review-slider", {
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                0: { slidesPerView: 1 },
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+            }
+        });
+
+        // Login/register functions
+        function showRegister() {
+            document.getElementById("login-form").style.display = "none";
+            document.getElementById("register-form").style.display = "block";
+        }
+        function showLogin() {
+            document.getElementById("register-form").style.display = "none";
+            document.getElementById("login-form").style.display = "block";
+        }
+    </script>
+</body>
+</html>

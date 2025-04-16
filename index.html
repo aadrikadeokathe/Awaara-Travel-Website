@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Awaara Travel - Home</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="icon" href="images/logoadrey.png">
+  <script src="js/auth.js"></script>
+  <script>
+    // Check login status on page load
+    window.addEventListener('load', () => {
+      const isLoggedIn = localStorage.getItem('isAdminLoggedIn');
+      const logoutBtn = document.getElementById('logout-btn');
+      const loginBtn = document.getElementById('login-btn');
+      const adminBtn = document.getElementById('admin-btn');
+
+      if (isLoggedIn === 'true') {
+        logoutBtn.style.display = 'inline-block';
+        loginBtn.style.display = 'none';
+        adminBtn.style.display = 'none';
+      }
+    });
+
+    // Admin login button click handler
+    document.getElementById('admin-btn').addEventListener('click', () => {
+      window.location.href = 'admin-login.html';
+    });
+
+    // Logout button click handler
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      localStorage.removeItem('adminToken');
+      localStorage.removeItem('isAdminLoggedIn');
+      window.location.reload();
+    });
+  </script>
+  <style>
+    /* Enhanced styling for login form container */
+    .login-form-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10000;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, .7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .login-form-container.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .login-form-container form {
+      margin: 2rem;
+      padding: 2rem;
+      border-radius: .5rem;
+      background: #fff;
+      width: 40rem;
+      max-width: 90%;
+      position: relative;
+      transform: translateY(-20px);
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .login-form-container.active form {
+      transform: translateY(0);
+    }
+
+    #form-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      color: #666;
+      cursor: pointer;
+    }
+
+    #form-close:hover {
+      color: #ff5a5f;
+    }
+    
+    .login-form-container form h3 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+    
+    .login-form-container form .box {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.1rem;
+      margin: .6rem 0;
+      border: 1px solid rgba(0,0,0,.3);
+      border-radius: 4px;
+      outline: none;
+    }
+    
+    .login-form-container form .btn {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      margin: 1.5rem 0;
+      border: none;
+      border-radius: 4px;
+      background: #ff5a5f;
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    
+    .login-form-container form .btn:hover {
+      background: #e63e44;
+    }
+    
+    .login-form-container form p {
+      font-size: 1rem;
+      text-align: center;
+      margin-top: 1rem;
+    }
+    
+    .login-form-container form p a {
+      color: #ff5a5f;
+      text-decoration: none;
+    }
+    
+    .login-form-container form p a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div id="menu-bar" class="fas fa-bars"></div>
+    <a class="navbar-brand" href="/">
+      <div class="logo-image">
+        <img src="images/logoadrey.png" class="img-fluid"
+          style="object-fit: contain; width: 180px; height: 80px">
+      </div>
+    </a>
+    <div class="nav">
+      <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="book.html">Book</a>
+        <a href="services.html">Services</a>
+        <a href="packages.html">Packages</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="review.html">Review</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+    <div class="icons">
+      <i class="fas fa-user" id="login-btn" title="Login"></i>
+      <i class="fas fa-user-shield" id="admin-btn" title="Admin Login" style="margin-left: 15px; cursor: pointer;"></i>
+      <i class="fas fa-sign-out-alt" id="logout-btn" title="Logout" style="display:none; cursor:pointer; margin-left: 15px;"></i>
+    </div>
+  </header>
+
+  <!-- Login/Register Modal -->
+  <div class="login-form-container">
+    <form id="login-form">
+      <i class="fas fa-times" id="form-close"></i>
+      <h3>Login</h3>
+      <input type="email" id="login-email" name="email" class="box" placeholder="Enter your Email" required>
+      <input type="password" id="login-password" name="password" class="box" placeholder="Enter your Password" required>
+      <input type="submit" value="Login Now" class="btn">
+      <div style="display: flex; align-items: center; margin: 1rem 0;">
+        <input type="checkbox" id="remember" style="width: auto; margin-right: 0.5rem;">
+        <label for="remember">Remember me</label>
+      </div>
+      <p>Don't have an account? <a href="#" id="show-register-link">Register now</a></p>
+    </form>
+
+    <!-- Register Form -->
+    <form id="register-form" style="display: none;">
+      <i class="fas fa-times" id="register-form-close"></i>
+      <h3>Register</h3>
+      <input type="text" id="register-name" name="full_name" class="box" placeholder="Enter your Name" required>
+      <input type="tel" id="register-phone" name="phone" class="box" placeholder="Enter your Phone Number" required pattern="[0-9]{10}">
+      <input type="email" id="register-email" name="email" class="box" placeholder="Enter your Email" required>
+      <input type="password" id="register-password" name="password" class="box" placeholder="Create Password" required>
+      <input type="submit" value="Register Now" class="btn">
+      <p>Already have an account? <a href="#" id="show-login-link">Login instead</a></p>
+    </form>
+  </div>
+
+  <section class="home" id="home">
+    <div class="content">
+      <h3>Awaara Travel Welcomes You!</h3>
+      <p>Discover India with us, Adventure Awaits.</p>
+      <p>India is yours to Explore.</p>
+      <a href="https://g.co/kgs/eCYs98S" class="btnmain">Know more >>></a>
+    </div>
+
+    <div class="controls">
+      <span class="img-btn active" data-src="images/imagecon1.jpg"></span>
+      <span class="img-btn" data-src="images/imagecon2.jpg"></span>
+      <span class="img-btn" data-src="images/imagecon3.jpg"></span>
+      <span class="img-btn" data-src="images/imagecon4.jpg"></span>
+      <span class="img-btn" data-src="images/imagecon5.jpg"></span>
+    </div>
+
+    <div class="img-container">
+      <img src="images/imagecon1.jpg" id="img-slider">
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <section class="footer">
+    <div class="box-container">
+      <div class="box">
+        <h3>About Us</h3>
+        <p>We Believe in Safe & Happy Travel. Do make yourself feel like part of Awaara Travel Family...</p>
+      </div>
+      <div class="box">
+        <h3>Branch Locations</h3>
+        <a href="https://g.co/kgs/yYmiiWP">Indore</a>
+        <a href="https://g.co/kgs/op3JvF5">Bhopal</a>
+        <a href="https://g.co/kgs/FdTMMaJ">Ujjain</a>
+      </div>
+      <div class="box">
+        <h3>Quick links</h3>
+        <a href="index.html">Home</a>
+        <a href="book.html">Book</a>
+        <a href="services.html">Services</a>
+        <a href="packages.html">Packages</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="review.html">Review</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="box">
+        <h3>Contact us</h3>
+        <p><i class="fas fa-phone-alt"></i> +91 9691205511</p>
+        <p><i class="fas fa-envelope"></i> AwaaraTravel@adrey.com</p>
+        <p><a href="https://g.co/kgs/wKHgFNq"><i class="fas fa-home"></i> NMIMS Indore</a></p>
+      </div>
+      <div class="box">
+        <h3>Follow us</h3>
+        <a href="https://www.facebook.com"><i class="fab fa-facebook-square"></i> Facebook</a>
+        <a href="https://www.instagram.com"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="https://twitter.com"><i class="fab fa-twitter"></i> Twitter</a>
+        <a href="https://www.linkedin.com"><i class="fab fa-linkedin"></i> Linkedin</a>
+      </div>
+    </div>
+    <h1 class="credit">Awaara by <span>ADREY</span></h1>
+  </section>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const loginForm = document.getElementById('login-form');
+      const registerForm = document.getElementById('register-form');
+      const loginBtn = document.getElementById('login-btn');
+      const logoutBtn = document.getElementById('logout-btn');
+
+      // Check if user is already logged in
+      const userToken = localStorage.getItem('userToken');
+      if (userToken) {
+        loginBtn.style.display = 'none';
+        logoutBtn.style.display = 'inline-block';
+      }
+
+      loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-password').value;
+        
+        // Simple authentication for demo (replace with actual authentication)
+        if (email && password) {
+          localStorage.setItem('userToken', 'user_' + Date.now());
+          document.querySelector('.login-form-container').classList.remove('active');
+          loginBtn.style.display = 'none';
+          logoutBtn.style.display = 'inline-block';
+        }
+      });
+
+      logoutBtn.addEventListener('click', function() {
+        logoutUser();
+      });
+    });
+  </script>
+  <script>
+    // Enhanced login form handling
+    document.querySelector('#login-btn').onclick = () => {
+      document.querySelector('.login-form-container').classList.add('active');
+      document.querySelector('#login-form').style.display = 'block';
+      document.querySelector('#register-form').style.display = 'none';
+    }
+
+    document.querySelector('#form-close').onclick = () => {
+      document.querySelector('.login-form-container').classList.remove('active');
+    }
+    
+    document.querySelector('#register-form-close').onclick = () => {
+      document.querySelector('.login-form-container').classList.remove('active');
+    }
+
+    document.querySelector('#show-register-link').onclick = (e) => {
+      e.preventDefault();
+      document.querySelector('#login-form').style.display = 'none';
+      document.querySelector('#register-form').style.display = 'block';
+    }
+
+    document.querySelector('#show-login-link').onclick = (e) => {
+      e.preventDefault();
+      document.querySelector('#register-form').style.display = 'none';
+      document.querySelector('#login-form').style.display = 'block';
+    }
+
+    // Register form submission handler
+    document.querySelector('#register-form').onsubmit = (e) => {
+      e.preventDefault();
+      const name = document.querySelector('#register-name').value;
+      const phone = document.querySelector('#register-phone').value;
+      const email = document.querySelector('#register-email').value;
+      const password = document.querySelector('#register-password').value;
+    
+      // Store user data in localStorage
+      const users = JSON.parse(localStorage.getItem('users') || '[]');
+      
+      // Check if email already exists
+      if (users.some(user => user.email === email)) {
+        alert('Email already registered. Please use a different email.');
+        return;
+      }
+    
+      users.push({ name, phone, email, password });
+      localStorage.setItem('users', JSON.stringify(users));
+    
+      alert('Registration successful! Please login with your credentials.');
+      document.querySelector('#register-form').style.display = 'none';
+      document.querySelector('#login-form').style.display = 'block';
+    };
+    
+    // Update login form submission handler to check registered users
+    document.querySelector('#login-form').onsubmit = (e) => {
+      e.preventDefault();
+      const email = document.querySelector('#login-email').value;
+      const password = document.querySelector('#login-password').value;
+      
+      // Check registered users
+      const users = JSON.parse(localStorage.getItem('users') || '[]');
+      const user = users.find(u => u.email === email && u.password === password);
+      
+      if (user || (email === 'aadrika@gmail.com' && password === 'aadrika')) {
+        localStorage.setItem('isLoggedIn', 'true');
+        document.querySelector('#login-btn').style.display = 'none';
+        document.querySelector('#logout-btn').style.display = 'inline-block';
+        document.querySelector('.login-form-container').classList.remove('active');
+        window.location.href = 'book.html';
+      } else {
+        alert('Invalid credentials. Please try again.');
+      }
+    };
+
+    // Logout handler
+    document.querySelector('#logout-btn').onclick = () => {
+      localStorage.removeItem('isLoggedIn');
+      document.querySelector('#login-btn').style.display = 'inline-block';
+      document.querySelector('#logout-btn').style.display = 'none';
+    }
+
+    // Check login state on page load
+    window.onload = () => {
+      if (localStorage.getItem('isLoggedIn') === 'true') {
+        document.querySelector('#login-btn').style.display = 'none';
+        document.querySelector('#logout-btn').style.display = 'inline-block';
+      }
+    }
+</script>
+</body>
+</html>

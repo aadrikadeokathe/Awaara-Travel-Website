@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking Details - Awaara Travel</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="fonts/font-awesome/css/all.min.css">
+  <style>
+    .booking-details {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .detail-group {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      border-bottom: 1px solid #ddd;
+    }
+    .detail-group:last-child {
+      border-bottom: none;
+    }
+    .detail-label {
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+    .detail-value {
+      color: #666;
+    }
+    .no-bookings {
+      text-align: center;
+      padding: 2rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <div id="menu-bar" class="fas fa-bars"></div>
+    <a href="index.html" class="logo"><span>A</span>waara</a>
+    <nav class="navbar">
+      <a href="index.html">home</a>
+      <a href="packages.html">packages</a>
+      <a href="services.html">services</a>
+      <a href="gallery.html">gallery</a>
+      <a href="review.html">review</a>
+      <a href="contact.html">contact</a>
+    </nav>
+  </header>
+
+  <!-- Booking Details Section -->
+  <section class="book" id="book">
+    <h1 class="heading">
+      <span>b</span>
+      <span>o</span>
+      <span>o</span>
+      <span>k</span>
+      <span>i</span>
+      <span>n</span>
+      <span>g</span>
+      <span class="space"></span>
+      <span>d</span>
+      <span>e</span>
+      <span>t</span>
+      <span>a</span>
+      <span>i</span>
+      <span>l</span>
+      <span>s</span>
+    </h1>
+    
+    <div id="bookingDetails" class="booking-details">
+      <!-- Booking details will be displayed here -->
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const adminToken = localStorage.getItem('adminToken');
+      if (!adminToken) {
+        window.location.href = 'admin-login.html';
+        return;
+      }
+      
+      const bookingDetails = document.getElementById('bookingDetails');
+      const storedBooking = localStorage.getItem('bookingData');
+
+      // Add admin controls if admin is logged in
+      if (adminToken) {
+        const adminControls = document.createElement('div');
+        adminControls.className = 'admin-controls';
+        adminControls.innerHTML = `
+          <h2>Admin Controls</h2>
+          <button onclick="window.location.href='admin.html'">View Admin Dashboard</button>
+          <button onclick="logoutAdmin()">Logout</button>
+        `;
+        bookingDetails.insertAdjacentElement('beforebegin', adminControls);
+      }
+
+      if (storedBooking) {
+        const booking = JSON.parse(storedBooking);
+        const detailsHTML = `
+          <div class="detail-group">
+            <div class="detail-label">Full Name</div>
+            <div class="detail-value">${booking.name}</div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-label">Email</div>
+            <div class="detail-value">${booking.email}</div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-label">Phone Number</div>
+            <div class="detail-value">${booking.phone}</div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-label">Destination</div>
+            <div class="detail-value">${booking.destination}</div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-label">Package Type</div>
+            <div class="detail-value">${booking.package}</div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-label">Number of Travelers</div>
+            <div class="detail-value">${booking.travelers}</div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-label">Travel Date</div>
+            <div class="detail-value">${booking.date}</div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-label">Special Requests</div>
+            <div class="detail-value">${booking.special_requests || 'None'}</div>
+          </div>
+        `;
+        bookingDetails.innerHTML = detailsHTML;
+      } else {
+        bookingDetails.innerHTML = '<div class="no-bookings">No booking details found.</div>';
+      }
+    });
+    function logoutAdmin() {
+      localStorage.removeItem('adminToken');
+      window.location.href = 'admin-login.html';
+    }
+  </script>
+  <style>
+    .admin-controls {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 20px;
+      background-color: #f0f8ff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .admin-controls button {
+      background-color: #0062ff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      margin: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+    .admin-controls button:hover {
+      background-color: #0051d4;
+    }
+  </style>
+</body>
+</html>

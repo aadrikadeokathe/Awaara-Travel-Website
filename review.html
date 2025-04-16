@@ -1,0 +1,208 @@
+review.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Awaara Travel - Reviews</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="icon" href="../images/Aeroplane.png">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div id="menu-bar" class="fas fa-bars"></div>
+        <a class="navbar-brand" href="/">
+            <div href="#" class="logo-image">
+                <img src="images/logoadrey.png" class="img-fluid"
+                    style="object-fit: contain; width: 180px; height: 80px">
+            </div>
+        </a>
+        <div class="nav">
+            <nav class="navbar">
+                <a href="index.html">Home</a>
+                <a href="book.html">Book</a>
+                <a href="services.html">Services</a>
+                <a href="packages.html">Packages</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="review.html">Review</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+        <div class="icons">
+            <i class="fas fa-user" id="login-btn" title="Login"></i>
+        </div>
+    </header>
+
+    <!-- Login Form -->
+    <div class="login-form-container">
+        <i class="fas fa-times" id="form-close"></i>
+        <form id="login-form">
+            <h3>Login</h3>
+            <input type="email" class="box" placeholder="Enter your Email" required>
+            <input type="password" class="box" placeholder="Enter your Password" required>
+            <input type="submit" value="Login Now" class="btn">
+            <input type="checkbox" id="remember">
+            <label for="remember">Remember me</label>
+            <p>Don't have an account? <a href="#" id="show-register-link">Register now</a></p>
+        </form>
+        <form id="register-form" style="display: none;">
+            <h3>Register</h3>
+            <input type="text" class="box" placeholder="Enter your Name" required>
+            <input type="email" class="box" placeholder="Enter your Email" required>
+            <input type="password" class="box" placeholder="Create Password" required>
+            <input type="submit" value="Register Now" class="btn">
+            <p>Already have an account? <a href="#" id="show-login-link">Login instead</a></p>
+        </form>
+    </div>
+
+    <!-- Customer Reviews Section -->
+    <section class="review" id="review">
+        <h1 class="heading"><span>CUSTOMER REVIEWS</span></h1>
+        
+        <div class="swiper-container review-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="manvi.jpg" alt="Manvi Garg">
+                        <h3>Manvi Garg</h3>
+                        <p>It was very fun and well planned and organised. The trip exceeded all our expectations!</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="aadrika.jpg" alt="Aadrika Deokathe">
+                        <h3>Aadrika Deokathe</h3>
+                        <p>Excellent service and amazing destinations. Will definitely travel with Awaara again!</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="khushi.jpg" alt="Khushi Chadda">
+                        <h3>Khushi Chadda</h3>
+                        <p>Very nice experience! The guides were knowledgeable and the itinerary was perfect.</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="sitlani.jpg" alt="Lakshya Sitlani">
+                        <h3>Lakshya Sitlani</h3>
+                        <p>Mast Maja aya! Best trip with friends. Everything was well organized.</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <!-- Enhanced Review Form Section -->
+    <section class="review-form">
+        <h1 class="heading"><span>SHARE YOUR EXPERIENCE</span></h1>
+        <form id="reviewForm">
+            <div class="inputBox">
+                <input type="text" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="inputBox">
+                <input type="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="inputBox">
+                <input type="text" name="trip_name" placeholder="Trip Name (e.g. Goa Package)" required>
+            </div>
+            <div class="inputBox">
+                <select name="rating" required>
+                    <option value="">Select Rating</option>
+                    <option value="5">★★★★★ (Excellent)</option>
+                    <option value="4">★★★★ (Very Good)</option>
+                    <option value="3">★★★ (Good)</option>
+                    <option value="2">★★ (Average)</option>
+                    <option value="1">★ (Poor)</option>
+                </select>
+            </div>
+            <div class="inputBox">
+                <textarea name="comments" placeholder="Your Detailed Comments" required></textarea>
+            </div>
+            <button type="submit" class="btn">Submit Review</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>About Us</h3>
+                <p>We Believe in Safe & Happy Travel. Do make yourself feel like party of Awaara Travel Family. Visit any
+                    destination at very ease and safety with us.
+                </p>
+            </div>
+            <div class="box">
+                <h3>Branch Locations</h3>
+                <a href="https://g.co/kgs/yYmiiWP">Indore</a>
+                <a href="https://g.co/kgs/op3JvF5">Bhopal</a>
+                <a href="https://g.co/kgs/FdTMMaJ">Ujjain</a>
+            </div>
+            <div class="box">
+                <h3>Quick links</h3>
+                <a href="index.html">Home</a>
+                <a href="book.html">Book</a>
+                <a href="services.html">Services</a>
+                <a href="packages.html">Packages</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="review.html">Review</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="box">
+                <h3>Contact us</h3>
+                <p><i class="fas fa-phone-alt"></i> +91 1234567890</i></p>
+                <p><i class="fas fa-envelope"></i> AwaaraTravel@adrey.com</i></p>
+                <p><a href="https://g.co/kgs/wKHgFNq"><i class="fas fa-home"></i> NMIMS Indore</a></i></p>
+            </div>
+    
+            <div class="box">
+                <h3>Follow us</h3>
+                <a href="https://www.facebook.com"><i class="fab fa-facebook-square"></i> Facebook</a>
+                <a href="https://www.instagram.com"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://twitter.com"><i class="fab fa-twitter"></i> Twitter</a>
+                <a href="https://www.linkedin.com"><i class="fab fa-linkedin"></i> Linkedin</a>
+            </div>
+        </div>
+        <h1 class="credit"> Awaara by <span> ADREY </span> </h1>
+    </section>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

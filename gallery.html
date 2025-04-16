@@ -1,0 +1,206 @@
+gallery.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Awaara Travel - Gallery</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="icon" href="../images/Aeroplane.png">
+</head>
+<body>
+    <body>
+
+        <header>
+            <div id="menu-bar" class="fas fa-bars"></div>
+            <a class="navbar-brand" href="/">
+                <div href="#" class="logo-image">
+                    <img src="images/logoadrey.png" class="img-fluid"
+                        style="object-fit: contain; width: 180px; height: 80px">
+                </div>
+            </a>
+            <div class="nav">
+                <nav class="navbar">
+                    <a href="index.html">Home</a>
+                    <a href="book.html">Book</a>
+                    <a href="services.html">Services</a>
+                    <a href="packages.html">Packages</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="review.html">Review</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+            </div>
+    
+            <div class="icons">
+                <i class="fas fa-user" id="login-btn" title="Login"></i>
+              </div>              
+            
+        </header>
+        <div class="login-form-container">
+
+            <i class="fas fa-times" id="form-close"></i>
+          
+            <!-- LOGIN FORM -->
+            <form id="login-form">
+              <h3>Login</h3>
+              <input type="email" class="box" placeholder="Enter your Email" required>
+              <input type="password" class="box" placeholder="Enter your Password" required>
+              <input type="submit" value="Login Now" class="btn">
+              <input type="checkbox" id="remember">
+              <label for="remember">Remember me</label>
+              <p>Don't have an account? <a href="#" onclick="showRegister()">Register now</a></p>
+            </form>
+          
+            <!-- REGISTER FORM (initially hidden) -->
+            <form id="register-form" style="display: none;">
+              <h3>Register</h3>
+              <input type="text" class="box" placeholder="Enter your Name" required>
+              <input type="email" class="box" placeholder="Enter your Email" required>
+              <input type="password" class="box" placeholder="Create Password" required>
+              <input type="submit" value="Register Now" class="btn">
+              <p>Already have an account? <a href="#" onclick="showLogin()">Login instead</a></p>
+            </form>
+          
+          </div>
+
+        <section class="gallery" id="gallery">
+
+            <h1 class="heading"><span>GALLERY</span></h1>
+            <br />
+            <div class="box-container">
+                <div class="box">
+                    <img src="images/g-1.jpg" alt="">
+                    <div class="content">
+                        <h3>The Holymen</h3>
+                        <p>The Hindu holy men at Pashupati Nath temple.</p>
+                        <a href="#" class="btn">See More</a>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="images/g-2.jpg" alt="">
+                    <div class="content">
+                        <h3>The Red Fort</h3>
+                        <p>The Red Fort or Lal Qila served as the main residence of the Mughal Emperors.</p>
+                        <a href="#" class="btn">See More</a>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="images/g-3.jpg" alt="">
+                    <div class="content">
+                        <h3>Harmandir Sahib</h3>
+                        <p>The Golden Temple is the preeminent spiritual site of Sikhism.</p>
+                        <a href="#" class="btn">See More</a>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="images/g-4.jpg" alt="">
+                    <div class="content">
+                        <h3>Gadisar lake</h3>
+                        <p>Lake at Jaisalmer Rajasthan at sunrise with ancient temples and archaeological ruins.</p>
+                        <a href="#" class="btn">See More</a>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="images/g-5.jpg" alt="">
+                    <div class="content">
+                        <h3>Lotus Temple</h3>
+                        <p>It is located in Delhi, India, is a Baháʼí House of Worship & Notable for its flowerlike shape.
+                        </p>
+                        <a href="#" class="btn">See More</a>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="images/g-6.jpg" alt="">
+                    <div class="content">
+                        <h3>Agra Fort</h3>
+                        <p>Agra Fort is a historical fort It was the main residence of the emperors of the Mughal Dynasty
+                            until 1638.</p>
+                        <a href="#" class="btn">See More</a>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="images/g-7.jpg" alt="">
+                    <div class="content">
+                        <h3>Taj Mahal</h3>
+                        <p>It is an ivory-white marble mausoleum on the right bank of the river Yamuna in the
+                            Indian city of Agra.</p>
+                        <a href="#" class="btn">See More</a>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="images/g-8.jpg" alt="">
+                    <div class="content">
+                        <h3>Shillong Camping</h3>
+                        <p>Shillong is a hill station in northeast India and capital of the state of Meghalaya.</p>
+                        <a href="#" class="btn">See More</a>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="images/g-9.jpg" alt="">
+                    <div class="content">
+                        <h3>Akshardham Temple</h3>
+                        <p>It is one of the largest temples in the Indian state of Gujarat.</p>
+                        <a href="#" class="btn">See More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="footer">
+            <div class="box-container">
+                <div class="box">
+                    <h3>About Us</h3>
+                    <p>We Believe in Safe & Happy Travel. Do make yourself feel like party of Awaara Travel Family. Visit any
+                        destination at very ease and safety with us.
+                    </p>
+                </div>
+                <div class="box">
+                    <h3>Branch Locations</h3>
+                    <a href="https://g.co/kgs/yYmiiWP">Indore</a>
+                    <a href="https://g.co/kgs/op3JvF5">Bhopal</a>
+                    <a href="https://g.co/kgs/FdTMMaJ">Ujjain</a>
+                </div>
+                <div class="box">
+                    <h3>Quick links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="book.html">Book</a>
+                    <a href="services.html">Services</a>
+                    <a href="packages.html">Packages</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="review.html">Review</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="box">
+                    <h3>Contact us</h3>
+                    <p><i class="fas fa-phone-alt"></i> +91 1234567890</i></p>
+                    <p><i class="fas fa-envelope"></i> AwaaraTravel@adrey.com</i></p>
+                    <p><a href="https://g.co/kgs/wKHgFNq"><i class="fas fa-home"></i> NMIMS Indore</a></i></p>
+                </div>
+        
+                <div class="box">
+                    <h3>Follow us</h3>
+                    <a href="https://www.facebook.com"><i class="fab fa-facebook-square"></i> Facebook</a>
+                    <a href="https://www.instagram.com"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="https://twitter.com"><i class="fab fa-twitter"></i> Twitter</a>
+                    <a href="https://www.linkedin.com"><i class="fab fa-linkedin"></i> Linkedin</a>
+                </div>
+            </div>
+            <h1 class="credit"> Awaara by <span> ADREY </span> </h1>
+        </section>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>
+<script>
+    function showRegister() {
+      document.getElementById("login-form").style.display = "none";
+      document.getElementById("register-form").style.display = "block";
+    }
+  
+    function showLogin() {
+      document.getElementById("register-form").style.display = "none";
+      document.getElementById("login-form").style.display = "block";
+    }
+</script>

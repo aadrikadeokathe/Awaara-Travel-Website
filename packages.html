@@ -1,0 +1,264 @@
+ackages.html
+y<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Awaara Travel - Packages</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="icon" href="../images/Aeroplane.png">
+  <script src="js/auth.js"></script>
+</head>
+<body>
+    <body>
+
+        <header>
+            <div id="menu-bar" class="fas fa-bars"></div>
+            <a class="navbar-brand" href="/">
+                <div href="#" class="logo-image">
+                    <img src="images/logoadrey.png" class="img-fluid"
+                        style="object-fit: contain; width: 180px; height: 80px">
+                </div>
+            </a>
+            <div class="nav">
+                <nav class="navbar">
+                    <a href="index.html">Home</a>
+                    <a href="book.html">Book</a>
+                    <a href="services.html">Services</a>
+                    <a href="packages.html">Packages</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="review.html">Review</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+            </div>
+    
+            <div class="icons">
+                <i class="fas fa-user" id="login-btn" title="Login"></i>
+              </div>              
+            
+        </header>
+        <div class="login-form-container">
+
+            <i class="fas fa-times" id="form-close"></i>
+          
+            <!-- LOGIN FORM -->
+            <form id="login-form">
+              <h3>Login</h3>
+              <input type="email" class="box" placeholder="Enter your Email" required>
+              <input type="password" class="box" placeholder="Enter your Password" required>
+              <input type="submit" value="Login Now" class="btn">
+              <input type="checkbox" id="remember">
+              <label for="remember">Remember me</label>
+              <p>Don't have an account? <a href="#" onclick="showRegister()">Register now</a></p>
+            </form>
+          
+            <!-- REGISTER FORM (initially hidden) -->
+            <form id="register-form" style="display: none;">
+              <h3>Register</h3>
+              <input type="text" class="box" placeholder="Enter your Name" required>
+              <input type="email" class="box" placeholder="Enter your Email" required>
+              <input type="password" class="box" placeholder="Create Password" required>
+              <input type="submit" value="Register Now" class="btn">
+              <p>Already have an account? <a href="#" onclick="showLogin()">Login instead</a></p>
+            </form>
+          
+          </div>
+
+        <section class="packages" id="packages">
+
+            <h1 class="heading"><span>PACKAGES</span></h1>
+            <br />
+            <div class="box-container">
+    
+                <div class="box">
+                    <img src="images/p-1.jpg" alt="">
+                    <div class="content">
+                        <h3> <i class="fas fa-map-marker-alt"></i> Goa </h3>
+                        <p>Goa is a state in western India with coastlines stretching along the Arabian Sea.</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="price"> Starting from ₹5,999 </div>
+                        <button class="btn know-more-btn" onclick="showPackageModal('Goa')">Know More</button>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <img src="images/p-6.jpg" alt="">
+                    <div class="content">
+                        <h3> <i class="fas fa-map-marker-alt"></i> Jammu and Kashmir</h3>
+                        <p>Jammu and Kashmir consists of three regions: Jammu, the Kashmir valley and. Ladakh.</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="price"> Starting from ₹7,999 <span>₹12,000</span> </div>
+                        <button class="btn know-more-btn" onclick="showPackageModal('Jammu and Kashmir')">Know More</button>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="images/p-3.jpg" alt="">
+                    <div class="content">
+                        <h3> <i class="fas fa-map-marker-alt"></i> Agra </h3>
+                        <p>Agra is a city on the banks of the Yamuna river in the Indian state of Uttar Pradesh.</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="price"> Starting from ₹5,999 <span>₹10,000</span> </div>
+                        <button class="btn know-more-btn" onclick="showPackageModal('Agra')">Know More</button>
+                    </div>
+                </div>
+    
+                <div class="box">
+                    <img src="images/p-4.jpg" alt="">
+                    <div class="content">
+                        <h3> <i class="fas fa-map-marker-alt"></i> Bombay </h3>
+                        <p>Mumbai Harbour waterfront stands the iconic Gateway of India stone arch.</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <div class="price"> Starting from ₹3,999 <span>₹7,000</span> </div>
+                        <button class="btn know-more-btn" onclick="showPackageModal('Bombay')">Know More</button>
+                    </div>
+                </div>
+    
+                <div class="box">
+                    <img src="images/p-5.jfif" alt="">
+                    <div class="content">
+                        <h3> <i class="fas fa-map-marker-alt"></i> Amritsar </h3>
+                        <p>Amritsar is a city in the northwestern Indian state of Punjab.</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="price"> Starting from ₹3,499 <span>₹7,000</span> </div>
+                        <button class="btn know-more-btn" onclick="showPackageModal('Amritsar')">Know More</button>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="images/g-4.jpg" alt="">
+                    <div class="content">
+                        <h3> <i class="fas fa-map-marker-alt"></i> Rajasthan</h3>
+                        <p>Gadisar lake at Jaisalmer Rajasthan at sunrise with ancient temples and archaeological ruins.</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="price"> Starting from ₹4,999 <span>₹9,000</span> </div>
+                        <button class="btn know-more-btn" onclick="showPackageModal('Rajasthan')">Know More</button>
+                    </div>
+                </div>
+    
+                <div class="box">
+                    <img src="images/p-2.jpg" alt="">
+                    <div class="content">
+                        <h3> <i class="fas fa-map-marker-alt"></i> Hyderabad </h3>
+                        <p>Hyderabad is the capital of southern India's Telangana state.</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <div class="price"> Starting from ₹6,999 <span>₹9,000</span> </div>
+                        <button class="btn know-more-btn" onclick="showPackageModal('Hyderabad')">Know More</button>
+                    </div>
+                </div>
+    
+            </div>
+        </section>
+
+        <!-- Package Modal -->
+        <div id="packageModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+                <h2 id="modalTitle">Package Options</h2>
+                <div class="package-options">
+                    <!-- Package options will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <section class="footer">
+            <div class="box-container">
+                <div class="box">
+                    <h3>About Us</h3>
+                    <p>We Believe in Safe & Happy Travel. Do make yourself feel like party of Awaara Travel Family. Visit any
+                        destination at very ease and safety with us.
+                    </p>
+                </div>
+                <div class="box">
+                    <h3>Branch Locations</h3>
+                    <a href="https://g.co/kgs/yYmiiWP">Indore</a>
+                    <a href="https://g.co/kgs/op3JvF5">Bhopal</a>
+                    <a href="https://g.co/kgs/FdTMMaJ">Ujjain</a>
+                </div>
+                <div class="box">
+                    <h3>Quick links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="book.html">Book</a>
+                    <a href="services.html">Services</a>
+                    <a href="packages.html">Packages</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="review.html">Review</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="box">
+                    <h3>Contact us</h3>
+                    <p><i class="fas fa-phone-alt"></i> +91 1234567890</i></p>
+                    <p><i class="fas fa-envelope"></i> AwaaraTravel@adrey.com</i></p>
+                    <p><a href="https://g.co/kgs/wKHgFNq"><i class="fas fa-home"></i> NMIMS Indore</a></i></p>
+                </div>
+        
+                <div class="box">
+                    <h3>Follow us</h3>
+                    <a href="https://www.facebook.com"><i class="fab fa-facebook-square"></i> Facebook</a>
+                    <a href="https://www.instagram.com"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="https://twitter.com"><i class="fab fa-twitter"></i> Twitter</a>
+                    <a href="https://www.linkedin.com"><i class="fab fa-linkedin"></i> Linkedin</a>
+                </div>
+            </div>
+            <h1 class="credit"> Awaara by <span> ADREY </span> </h1>
+        </section>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="script.js"></script>
+  <script src="package-modal.js"></script>
+</body>
+</html>
+<script>
+    function showRegister() {
+      document.getElementById("login-form").style.display = "none";
+      document.getElementById("register-form").style.display = "block";
+    }
+  
+    function showLogin() {
+      document.getElementById("register-form").style.display = "none";
+      document.getElementById("login-form").style.display = "block";
+    }
+</script>
+
+
